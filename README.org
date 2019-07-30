@@ -1,0 +1,18 @@
+* Days & Bhajans
+  | Sunday    | Ravivar                    |
+  | Monday    | Somvar                     |
+  | Tuesday   | Mangalvar                  |
+  | Wednesday | Budhvar                    |
+  | Thursday  | (Guruvar or Vrihaspativar) |
+  | Friday    | Shukravar                  |
+
+
+* How it works
+  1. search page to query youtube
+  2. play youtube video
+
+* Wishlist
+  - offline mode
+  - cache played musics (30days)
+  - runs on rpi
+  - controlled via remote interface
