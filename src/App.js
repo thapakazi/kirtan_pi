@@ -2,25 +2,35 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
+class App extends React.Component {
+  constructor(){
+    super();
+     this.state= {
+       txt: "hare raam hare hare",
+    };
+  }
+  update(e){
+    this.setState({
+      txt: e.target.value
+    });    
+  }
+  componentWillMount(){
+    console.log("componentWillMount")
+  }
+  render(){
+    console.log("render")
+    return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="text" onChange={this.update.bind(this)}/>
+      <h1>{this.state.txt}</h1>
+
+      
     </div>
-  );
+    );
+  };
+  componentDidMount(){
+    console.log("component did mount")
+  }
 }
 
 export default App;
