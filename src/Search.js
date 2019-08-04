@@ -1,6 +1,6 @@
 import React from 'react';
 import {search} from './utils/api';
-import './Search.css';
+import styled from 'styled-components';
 
 class Search extends React.Component {
   constructor(){
@@ -21,29 +21,58 @@ class Search extends React.Component {
       );
     }
     return(
-      <div>
+      <SearchWrapper>
         &nbsp;Search Bhajans &nbsp;&nbsp;
         <input type="text" onChange={this.filter.bind(this)} placeholder="search bahubali.."/>
         {items.map(item => <Result key={item.etag} result={item}/>)}
-      </div>
+      </SearchWrapper>
     );
     
   }
 }
+const SearchWrapper = styled.div`
+  text-align: center;
+  width: 80%;
+  margin: 0px auto;
+`;
 
-const Result =(props) =>{
-  let resultSnippet =props.result.snippet;
+const StyledResultThumbnail = styled.img`
+  height: inherit;
+`;
+
+const StyledResultWrapper = styled.div`
+  display: flex;
+  background-color: #f2f3f4;
+  margin: 1em 1em 2em 1em;
+  box-shadow: 3px 3px 11px 0px #7db9ce;
+  height: 10em;
+`;
+
+const StyledResultDetails = styled.div`
+  padding: 0.5em;
+`;
+
+const StyledTitle = styled.div`
+  font-weight: bold;
+  text-align: left;
+`;
+
+const StyledDescription = styled.p`
+  text-align: left;
+  margin-top: 0.5em;
+`;
+
+const Result =({result}) =>{
+  let {snippet,id} = result;
 
   return (
-    <div>
-      <div className="card">
-        <img src={resultSnippet.thumbnails.high.url} alt={resultSnippet.title} style={{width:'100%'}}/>
-        <div className="container">
-          <h4><b>{resultSnippet.title}</b></h4> 
-          <pre>{resultSnippet.description}</pre> 
-        </div>
-      </div>
-    </div>
+    <StyledResultWrapper>
+      <StyledResultThumbnail src={snippet.thumbnails.high.url} alt="thumbnail"/>
+      <StyledResultDetails>
+        <StyledTitle>{snippet.title}</StyledTitle>
+        <StyledDescription>{snippet.description}</StyledDescription>
+      </StyledResultDetails>
+    </StyledResultWrapper>
   );
 };
   
