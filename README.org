@@ -1,0 +1,23 @@
+* Days & Bhajans
+  | Sunday    | Ravivar                    | Sun        |
+  | Monday    | Somvar                     | Shiva      |
+  | Tuesday   | Mangalvar                  | Hanuman    |
+  | Wednesday | Budhvar                    | Krishna    |
+  | Thursday  | (Guruvar or Vrihaspativar) | Vishnu     |
+  | Friday    | Shukravar                  | Durga/Kali |
+  | Saturday  | Shanivar                   | Shani      |
+  
+  * Ref:
+    - [[https://www.learnreligions.com/hindu-deities-rituals-for-week-1770073][Fasting, Praying, and Regular Hindu Rituals]]
+
+* How it works
+  1. search page to query youtube
+  2. play youtube video
+
+* Wishlist
+  - offline mode
+  - cache played musics (30days)
+  - runs on rpi
+  - controlled via remote interface
+* Scratch
+** trying out storybook  

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -11,7 +11,6 @@ const StyledResultWrapper = styled.div`
   margin: 1em 1em 2em 1em;
   height: 10em;
 `;
-
 
 const StyledResultThumbnail = styled.img`
   height: inherit;
@@ -34,9 +33,10 @@ const StyledDescription = styled.p`
   margin-top: 0.6em;
 `;
 
-const Result =({result}) =>{
+const Result =({watchVideo, result}) =>{
   let {snippet,id} = result;
 
+  console.log('inside result')
   return (
     <StyledResultWrapper>
       <StyledResultThumbnail src={snippet.thumbnails.high.url} alt="thumbnail"/>
@@ -44,8 +44,8 @@ const Result =({result}) =>{
         <StyledTitle>{snippet.title}</StyledTitle>
         <StyledDescription>
           {snippet.description}
-          <Controls/>
         </StyledDescription>
+        <Controls  videoId={id.videoId} watchVideo={watchVideo} />
       </StyledResultDetails>
     </StyledResultWrapper>
 

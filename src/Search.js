@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {search} from './utils/api';
 import styled from 'styled-components';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
 import Result from 'components/Result';
+import Modal from 'components/Modal';
+import ReactPlayer from 'react-player';
 
 const SearchWrapper = styled.div`
   text-align: center;
@@ -27,37 +29,80 @@ const SearchBox = styled(Input.Search)`
     margin-top: 1.2em;
   }
 `;
-export default class Search extends React.Component {
-  constructor(){
-    super();
-    this.state = {items: []};
-  }
 
-  async filter(value){
-    const items = await search(value);
-    this.setState({items: items.items});
-  }
-  render() {
-    let items = this.state.items;
-    if (this.state.filter){
-      items = items.filter(
-        item => item.snippet.title.toLowerCase()
-          .includes(this.state.filter.toLowerCase())
-      );
-    }
-    return(
-      <SearchWrapper>
-        <SearchBox
-          placeholder = "Search Bhajans..."
-          onSearch = { this.filter.bind(this)}
-          style={{padding: '10px'}}
-        />
-        <StyledSearchResults>
-          { items.length !== 0 ? items.map(item => <Result key={item.etag} result={item}/>): "...your playlist goes here..."}
-        </StyledSearchResults>
-      </SearchWrapper>
-    );
-    
-  }
+export const Search = () => {
+  let [ items, setItems] = useState([]);
+  const filter = async (value) => {
+    items = await search(value);
+    setItems(items.items);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [videoParams, setVideoParams] = useState({});
+  const handleOpenModal =() => {
+    setShowModal(true);
+  };
+  
+  const handleCloseModal = () =>  {
+    setShowModal(false);
+  };
+  
+  const getYoutubeUrl = (videoId) => {
+    return `https://www.youtube.com/watch?v=`+ videoId;
+  };
+  
+  const watchVideo =(videoId) => {
+    let url= getYoutubeUrl(videoId);
+    // console.log('url:'+ url);
+    setVideoParams({url: url});
+
+    console.log('modal toggle pressed');
+    console.log('showModal: '+ showModal);
+    return setShowModal(!showModal);
+  };
+
+  const stickyPlayer={
+
+  };
+
+
+  return(
+    <SearchWrapper>
+      <SearchBox
+        placeholder = "Search Bhajans..."
+        onSearch = {filter}
+        style={{padding: '10px'}}
+      />
+      <StyledSearchResults >
+        { items.length !== 0 
+          ? items.map(item => <Result key={item.etag} result={item} watchVideo={watchVideo} />)
+          : "...your playlist goes here..."
+        }
+      </StyledSearchResults>
+      <Modal showModal={showModal} onCancel={watchVideo}>
+        <StickyWrapper>
+          <Player
+            url={videoParams.url}
+            playing
+            height='15em'
+            width='20em'
+            controls={true}
+          />
+        </StickyWrapper>
+      </Modal>
+    </SearchWrapper>
+  );
 }
 
+const StickyWrapper = styled.div`
+  position: fixed;
+  bottom: -4px;
+  right: 10px;
+`;
+
+const Player = styled(ReactPlayer)`
+  background: #31B0D5;
+  padding: 2px 2px;
+  // height: 15em;
+  // width: 20em;
+`;

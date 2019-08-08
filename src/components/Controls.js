@@ -5,6 +5,7 @@ import { Menu, Button,Dropdown } from 'antd';
 const StyledControlWrapper = styled.div`
   display: flex;
 `;
+
 const PlayButton = styled(Button)`
   border: 1px solid black;
   background: blue;
@@ -25,11 +26,13 @@ const Playlist = (
 
 const Favorite = styled(Button)``;
 const AddToPlaylist = styled(Dropdown)``;
-const Controls =(props) =>{
+
+const Controls =({ videoId,watchVideo }) =>{
+  
   return(
     <StyledControlWrapper>
-      <PlayButton icon="right"> Play </PlayButton>
-      <Favorite icon="heart"> Favourite</Favorite>
+      <PlayButton icon="right" onClick={() => {watchVideo(videoId)}}> Play </PlayButton>
+      <Favorite icon="heart" onClick={()=> {console.log('favourite pressed')}}> Favourite</Favorite>
       <AddToPlaylist overlay={Playlist}>
         <Button icon="plus">AddTo</Button>
       </AddToPlaylist>
