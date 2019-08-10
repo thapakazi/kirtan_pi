@@ -6,23 +6,21 @@ const propTypes = {};
 const defaultProps = {};
 
 const Modal = ({showModal, children,onCancel}) => {
-  const el = document.createElement('div');
+  let modalRoot = document.getElementById('modal-root');
   useEffect(() => {
-    let modalRoot = document.getElementById('modal-root');
     if (!modalRoot) {
       modalRoot = document.createElement('div');
       modalRoot.setAttribute('id', 'modal-root');
       document.body.appendChild(modalRoot);
     }
-    modalRoot.appendChild(el);
     return () => {
-      modalRoot.removeChild(el);
+      // modalRoot.removeChild(el);
     };
   });
   return showModal ? ReactDom.createPortal(
     <div>simple div, nothing facny
     {children}
-    </div>, el
+    </div>, modalRoot
   ): null;
 
 };

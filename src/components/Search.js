@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {search} from './utils/api';
+import {search} from '../utils/api';
 import styled from 'styled-components';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
@@ -21,7 +21,7 @@ const StyledSearchResults = styled.div`
 
 `;
 
-const SearchBox = styled(Input.Search)`
+const SearchBoxStyle = styled(Input.Search)`
   background: lightsalmon;
 
 
@@ -30,7 +30,13 @@ const SearchBox = styled(Input.Search)`
   }
 `;
 
-export const Search = () => {
+// function SearchBox (){
+//   return(
+//     <SearchBoxStyle/>
+//   );
+// }
+
+const Search = () => {
   let [ items, setItems] = useState([]);
   const filter = async (value) => {
     items = await search(value);
@@ -53,18 +59,9 @@ export const Search = () => {
   
   const watchVideo =(videoId) => {
     let url= getYoutubeUrl(videoId);
-    // console.log('url:'+ url);
     setVideoParams({url: url});
-
-    console.log('modal toggle pressed');
-    console.log('showModal: '+ showModal);
     return setShowModal(!showModal);
   };
-
-  const stickyPlayer={
-
-  };
-
 
   return(
     <SearchWrapper>
@@ -106,3 +103,5 @@ const Player = styled(ReactPlayer)`
   // height: 15em;
   // width: 20em;
 `;
+
+export default Search;

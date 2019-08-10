@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
-import {Search} from './Search';
 import * as serviceWorker from './serviceWorker';
 import './theme/globalStyle';
 const config = require('./config');
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
-  <Search />,
+  <App />,
   document.getElementById('root')
 );
 

@@ -35,7 +35,6 @@ const StyledDescription = styled.p`
 
 const Result =({watchVideo, result}) =>{
   let {snippet,id} = result;
-
   console.log('inside result')
   return (
     <StyledResultWrapper>

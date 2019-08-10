@@ -1,36 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Fragment} from 'react';
+import PropTypes from 'prop-types';
+import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
+import Search from './components/Search';
+import Playlist from './pages/Playlist';
+import Favourite from './pages/Favourite';
+import SearchResult from './pages/SearchResult';
+import Layout from './components/layouts/Layout';
+const propTypes = {};
+const defaultProps = {};
 
-class App extends React.Component {
-  constructor(){
-    super();
-     this.state= {
-       txt: "hare raam hare hare",
-    };
-  }
-  update(e){
-    this.setState({
-      txt: e.target.value
-    });    
-  }
-  componentWillMount(){
-    console.log("componentWillMount")
-  }
-  render(){
-    console.log("render")
-    return(
-    <div className="App">
-      <input type="text" onChange={this.update.bind(this)}/>
-      <h1>{this.state.txt}</h1>
+const App = (props) => {
+  return(
+    <Fragment>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SearchResult}/>
+          <Route exact path="/playlist" component={Playlist}/>
+          <Route exact path="/favourite" component={Favourite}/>
+          <Route exact path="/search" component={SearchResult}/>
+        </Switch>
+    </Router>
+    </Fragment>
+  );
+};
 
-      
-    </div>
-    );
-  };
-  componentDidMount(){
-    console.log("component did mount")
-  }
-}
+App.propTypes = propTypes;
 
 export default App;
