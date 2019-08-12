@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {search} from '../utils/api';
 import styled from 'styled-components';
-import { Input } from 'antd';
+
 import 'antd/dist/antd.css';
 import Result from 'components/Result';
 import Modal from 'components/Modal';
@@ -21,20 +21,6 @@ const StyledSearchResults = styled.div`
 
 `;
 
-const SearchBoxStyle = styled(Input.Search)`
-  background: lightsalmon;
-
-
-  &.ant-input-search{
-    margin-top: 1.2em;
-  }
-`;
-
-// function SearchBox (){
-//   return(
-//     <SearchBoxStyle/>
-//   );
-// }
 
 const Search = () => {
   let [ items, setItems] = useState([]);
@@ -65,11 +51,6 @@ const Search = () => {
 
   return(
     <SearchWrapper>
-      <SearchBox
-        placeholder = "Search Bhajans..."
-        onSearch = {filter}
-        style={{padding: '10px'}}
-      />
       <StyledSearchResults >
         { items.length !== 0 
           ? items.map(item => <Result key={item.etag} result={item} watchVideo={watchVideo} />)

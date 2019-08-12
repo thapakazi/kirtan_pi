@@ -4,17 +4,19 @@ import { Menu, Button,Dropdown } from 'antd';
 
 const StyledControlWrapper = styled.div`
   display: flex;
+  .ant-btn {
+   position: static;
+   }
 `;
 
 const PlayButton = styled(Button)`
-  border: 1px solid black;
-  background: blue;
+  // border: 1px solid black;
 `;
-
 
 const handleMenuClick = (e) => {
   console.log('click', e);
 };
+
 const Playlist = (
   <Menu onClick={handleMenuClick}>
     <Menu.Item key="1">Monday Bhajans</Menu.Item>
@@ -28,7 +30,6 @@ const Favorite = styled(Button)``;
 const AddToPlaylist = styled(Dropdown)``;
 
 const Controls =({ videoId,watchVideo }) =>{
-  
   return(
     <StyledControlWrapper>
       <PlayButton icon="right" onClick={() => {watchVideo(videoId)}}> Play </PlayButton>

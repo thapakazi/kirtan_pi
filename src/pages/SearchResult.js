@@ -1,11 +1,11 @@
 import React,{useState,Fragment} from 'react';
 import styled from 'styled-components';
-
 import 'antd/dist/antd.css';
+
 import Result from 'components/Result';
 import Modal from 'components/Modal';
-import ReactPlayer from 'react-player';
 import Layout from '../components/layouts/Layout';
+import Player from 'components/layouts/Player';
 
 const SearchWrapper = styled.div`
   text-align: center;
@@ -23,8 +23,6 @@ const StyledSearchResults = styled.div`
 
 
 function SearchResult ({items, ...props}) {
-  console.log("items", items);
-  console.log("Props:",props)
   const [showModal, setShowModal] = useState(false);
   const [videoParams, setVideoParams] = useState({});
   const handleOpenModal =() => {
@@ -68,7 +66,6 @@ function SearchResult ({items, ...props}) {
       </SearchWrapper>
     );
   }
-
   return(
     <Layout render={render}/>
   );
@@ -80,11 +77,5 @@ const StickyWrapper = styled.div`
   right: 10px;
 `;
 
-const Player = styled(ReactPlayer)`
-  background: #31B0D5;
-  padding: 2px 2px;
-  // height: 15em;
-  // width: 20em;
-`;
 
 export default SearchResult;
