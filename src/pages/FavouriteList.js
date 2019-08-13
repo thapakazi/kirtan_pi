@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react';
 import Layout from '../components/layouts/Layout';
 
-const Favourite =() =>{
-  console.log("inside favourite");
+const FavouriteList =() =>{
+  console.log("inside favourite list");
+
   return(
     <Fragment>
       <Layout render={prop => <div>{JSON.stringify(prop)}</div>} />
@@ -10,4 +11,4 @@ const Favourite =() =>{
   );
 };
 
-export default Favourite;
+export default FavouriteList;

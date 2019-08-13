@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 
 import Result from 'components/Result';
 import Modal from 'components/Modal';
-import Layout from '../components/layouts/Layout';
+import Layout from 'components/layouts/Layout';
 import Player from 'components/layouts/Player';
 
 const SearchWrapper = styled.div`
@@ -20,7 +20,6 @@ const StyledSearchResults = styled.div`
   // box-shadow: 3px 3px 11px 0px #7db9ce;
 
 `;
-
 
 function SearchResult ({items, ...props}) {
   const [showModal, setShowModal] = useState(false);
@@ -47,7 +46,11 @@ function SearchResult ({items, ...props}) {
       <SearchWrapper>
         <StyledSearchResults >
           { items.length !== 0 
-            ? items.map(item => <Result key={item.etag} result={item} watchVideo={watchVideo} />)
+            ? items.map(item => <Result
+                                  key={item.etag}
+                                  result={item}
+                                  watchVideo={watchVideo}
+                                />)
             : "...your playlist goes here..."
           }
           
@@ -56,10 +59,17 @@ function SearchResult ({items, ...props}) {
           <StickyWrapper>
             <Player
               url={videoParams.url}
-              playing
               height='15em'
               width='20em'
               controls={true}
+              config={{
+                youtube: {
+                  playerVars: {
+                    'showinfo': 1,
+                    'autoplay': 1
+                  }
+                },
+              }}
             />
           </StickyWrapper>
         </Modal>

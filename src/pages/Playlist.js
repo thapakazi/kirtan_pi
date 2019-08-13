@@ -1,16 +1,23 @@
 import React, {Fragment} from 'react';
 import Layout from '../components/layouts/Layout';
+import styled from 'styled-components';
 
-function PlayListWrapper(){
-  return <div>Inside Playlist</div>
-}
-function Playlist(){
-  console.log("inside playlist");
+
+const PlaylistWrap = styled(PlaylistResult)`
+  
+`;
+function PlaylistResult(){
   return(
-    <Fragment>
-      <Layout render={props => (<PlayListWrapper/>)}/>
-    </Fragment>
+    <div>
+      Playlist Results
+    </div>
   );
 }
 
-export default Playlist;
+export default function Playlist(){
+  return(
+    <Fragment>
+      <Layout render={props => (<PlaylistResult/>)}/>
+    </Fragment>
+  );
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Menu, Button,Dropdown } from 'antd';
-
+import Favourite from './Favourite';
 const StyledControlWrapper = styled.div`
   display: flex;
   .ant-btn {
@@ -26,14 +26,17 @@ const Playlist = (
   </Menu>
 );
 
-const Favorite = styled(Button)``;
 const AddToPlaylist = styled(Dropdown)``;
 
 const Controls =({ videoId,watchVideo }) =>{
   return(
     <StyledControlWrapper>
-      <PlayButton icon="right" onClick={() => {watchVideo(videoId)}}> Play </PlayButton>
-      <Favorite icon="heart" onClick={()=> {console.log('favourite pressed')}}> Favourite</Favorite>
+      <PlayButton
+        icon="right"
+        onClick={() => {watchVideo(videoId)}}>
+       n Play
+      </PlayButton>
+      <Favourite videoId={videoId}/>
       <AddToPlaylist overlay={Playlist}>
         <Button icon="plus">AddTo</Button>
       </AddToPlaylist>
