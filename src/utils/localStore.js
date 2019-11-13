@@ -4,13 +4,16 @@ const set = (key,value) =>
 const remove = (key) =>
       localStorage.removeItem(key);
 
-const get = (key) => 
+const get = (key) =>
   localStorage.getItem(key);
 
 // localstore getter/setter for favourites
-export const setFavourite = (k,v) => {
+export const setFavourite = (v) => {
   let storageType='favourite';
-  set(`${storageType}.${k}`,v);
+  set(`${storageType}`,v);
+
+  let favs =[];
+  
 };
 
 export const getFavourite = (k) => {
@@ -23,8 +26,6 @@ export const removeFavourite = (k) => {
   return remove(`${storageType}.${k}`);
 };
 
-
 export const isFavourite = (k) => {
-  console.log(!!getFavourite(k))
   return !!getFavourite(k);
 }

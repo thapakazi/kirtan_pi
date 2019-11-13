@@ -34,7 +34,7 @@ const Controls =({ videoId,watchVideo }) =>{
       <PlayButton
         icon="right"
         onClick={() => {watchVideo(videoId)}}>
-       n Play
+        Play
       </PlayButton>
       <Favourite videoId={videoId}/>
       <AddToPlaylist overlay={Playlist}>

@@ -11,9 +11,9 @@ export async function search(queryString){
   let url, searchParams;
   if (queryString) {
     searchParams = queryString.split(' ').join('+');
-  } else {
-    let _god=getRandomGod();
-    searchParams = `${_god} bhajans`;
+  // } else {
+  //   let _god=getRandomGod();
+  //   searchParams = `${_god} bhajans`;
   }
   url=`search?part=snippet&maxResults=5&key=${YOUTUBE_API_KEY}&q=${searchParams}`;
   return await get(url);

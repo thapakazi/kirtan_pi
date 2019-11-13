@@ -62,6 +62,7 @@ function SearchResult ({items, ...props}) {
               height='15em'
               width='20em'
               controls={true}
+              pip
               config={{
                 youtube: {
                   playerVars: {

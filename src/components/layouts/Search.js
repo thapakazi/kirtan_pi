@@ -21,9 +21,10 @@ export function SearchBox ({setItems}){
   },[]);
 
   const filter = async (value) => {
-    const items = await search(value);
-    setItems(items.items);
-    console.log(items);
+    if (!!value) {
+      let _items = await search(value);
+      setItems(_items.items);
+    };
   };
   const handleChange = (e) =>{
     setGod(e.target.value);
